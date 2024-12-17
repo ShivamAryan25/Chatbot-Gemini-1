@@ -1,0 +1,230 @@
+.message {
+    padding: 1.25rem;
+    margin: 0.75rem 0;
+    border-radius: 1rem;
+    max-width: 85%;
+    animation: fadeIn 0.3s ease-in;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.message-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+}
+
+.message-role {
+    font-weight: 600;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.message-role::before {
+    font-family: 'remixicon';
+    font-size: 1.1em;
+}
+
+.user-message .message-role::before {
+    content: "\f0be";  /* User icon */
+    color: #4B5563;
+}
+
+.assistant-message .message-role::before {
+    content: "\ee5c";  /* Robot icon */
+    color: #7C3AED;
+}
+
+.message-time {
+    color: #9CA3AF;
+    font-size: 0.75rem;
+}
+
+.message-content {
+    line-height: 1.6;
+    color: #1F2937;
+}
+
+/* Markdown Styling */
+.assistant-message .message-content {
+    white-space: normal;
+}
+
+.assistant-message .message-content h1 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 1em 0 0.5em;
+    color: #1F2937;
+    border-bottom: 2px solid #E5E7EB;
+    padding-bottom: 0.3em;
+}
+
+.assistant-message .message-content h2 {
+    font-size: 1.25em;
+    font-weight: bold;
+    margin: 0.8em 0 0.4em;
+    color: #1F2937;
+}
+
+.assistant-message .message-content ul,
+.assistant-message .message-content ol {
+    margin: 0.75em 0;
+    padding-left: 1.5em;
+}
+
+.assistant-message .message-content li {
+    margin: 0.5em 0;
+    position: relative;
+}
+
+.assistant-message .message-content ul li::before {
+    content: "•";
+    color: #7C3AED;
+    font-weight: bold;
+    position: absolute;
+    left: -1em;
+}
+
+.assistant-message .message-content p {
+    margin: 0.75em 0;
+}
+
+.assistant-message .message-content pre {
+    background: #1F2937;
+    padding: 1em;
+    border-radius: 0.5em;
+    margin: 0.75em 0;
+    overflow-x: auto;
+    position: relative;
+}
+
+.assistant-message .message-content code {
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.9em;
+}
+
+.assistant-message .message-content blockquote {
+    border-left: 4px solid #7C3AED;
+    padding: 0.75em 1em;
+    margin: 0.75em 0;
+    background: #F3F4F6;
+    border-radius: 0.25em;
+    color: #4B5563;
+    font-style: italic;
+}
+
+.assistant-message .message-content strong {
+    color: #1F2937;
+    font-weight: 600;
+}
+
+.user-message {
+    background-color: #F9FAFB;
+    margin-left: auto;
+    border: 1px solid #E5E7EB;
+}
+
+.assistant-message {
+    background-color: #F5F3FF;
+    margin-right: auto;
+    border: 1px solid #EDE9FE;
+}
+
+.error-message {
+    background-color: #FEF2F2;
+    margin-right: auto;
+    color: #DC2626;
+    border: 1px solid #FEE2E2;
+}
+
+#chat-container {
+    height: calc(100vh - 13rem);
+    padding: 1rem;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+}
+
+#chat-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chat-container::-webkit-scrollbar-track {
+    background: #F3F4F6;
+}
+
+#chat-container::-webkit-scrollbar-thumb {
+    background: #D1D5DB;
+    border-radius: 3px;
+}
+
+#chat-container::-webkit-scrollbar-thumb:hover {
+    background: #9CA3AF;
+}
+
+.typing-indicator {
+    padding: 1rem;
+    background-color: #F5F3FF;
+    border-radius: 1rem;
+    width: fit-content;
+    margin-right: auto;
+    border: 1px solid #EDE9FE;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.typing-dots {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0 0.5rem;
+}
+
+.typing-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #7C3AED;
+    border-radius: 50%;
+    animation: typing 1s infinite ease-in-out;
+    opacity: 0.6;
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes typing {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+    .message {
+        max-width: 90%;
+    }
+
+    #chat-container {
+        height: calc(100vh - 11rem);
+    }
+}
